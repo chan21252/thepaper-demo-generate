@@ -1,0 +1,46 @@
+{
+    "ad": [
+        {
+            "id": 1,
+            "name": "opening_page",
+            "text": "开机屏",
+            "page": ["1080*1596", "1125*2098", "iPhoneX"],
+            "is_news": false 
+        },
+        {
+            "id": 2,
+            "name": "focus_banner",
+            "text": "焦点通栏",
+            "page": ["首页", "视频", "时事", "财经", "思想", "生活", "问吧"],
+            "is_news": false
+        },
+        {
+            "id": 3,
+            "name": "banner",
+            "text": "横栏",
+            "page": ["首页", "视频", "时事", "财经", "思想", "生活", "问吧"],
+            "is_news": false
+        },
+        {
+            "id": 4,
+            "name": "pop_up_1",
+            "text": "弹窗（横版）",
+            "page": ["首页", "视频", "时事", "财经", "思想", "生活", "问吧"],
+            "is_news": false
+        },
+        {
+            "id": 5,
+            "name": "pop_up_1",
+            "text": "弹窗（竖版）",
+            "page": ["首页", "视频", "时事", "财经", "思想", "生活", "问吧"],
+            "is_news": false
+        },
+        {
+            "id": 5,
+            "name": "float_layer",
+            "text": "浮层",
+            "page": ["导航栏", "视频", "时事", "财经", "思想", "生活", "问吧"],
+            "is_news": "false"
+        }
+    ]
+}

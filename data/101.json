@@ -1,0 +1,11 @@
+{
+    "ad_id": 1,
+    "ad_target": "1080*1596",
+    "img_size": [1080, 1596],
+    "demo_size": [750, 1334],
+    "canvas_pos": [0, 0],
+    "canvas_size": [750, 1110],
+    "is_adtag": true,
+    "is_news": false,
+    "img1": "./img/opening-bg-1080-1596.jpg"
+}

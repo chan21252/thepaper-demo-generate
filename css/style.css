@@ -1,0 +1,34 @@
+ html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
+    margin: 0;
+    padding: 0;
+}
+
+div{
+    display: block;
+}
+
+body{
+    font-family: "Microsoft YaHei";
+    color: #3C3C3C;
+}
+img{
+    border: none;
+}
+
+.header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 80px;
+    font-size: 24px;
+    padding: 20px 28px 28px;
+    background: linear-gradient(30deg, #0080ff, #00bbff 30%, #fff);
+}
+
+.container{
+    position: absolute;
+    top:100px;
+}
+
