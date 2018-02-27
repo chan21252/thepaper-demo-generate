@@ -1,135 +1,156 @@
-
-var target_id_list;
-var target_id;
-var target_id_info;
-var file;
+var ad_list;                //广告位列表
+var ad_dict = new Array();  //广告位字典,便于属性访问
+var page_list;              //投放页面列表
+var ad_id_clk;              //选中的广告位ID
+var campaign_id;            //广告活动ID，由广告位ID和投放页面ID组成
+var file;                   //上传的图片文件
 
 $(document).ready(function(){
+    /*获得定向页面ID列表*/
+    $.ajax({
+        type: "GET",
+        url: "./data/page.json",
+        dataType: "json",
+        success: function(response){
+            page_list = eval(response);  
+            console.log("投放页面ID列表:%o", page_list);
+            $("#info").text("投放页面列表加载成功");    
+        },
+        error: function(){
+            $("#info").text("投放页面列表加载失败，请联系技术人员");
+        }
+    });
+
     /*动态生成广告位菜单*/
     $.ajax({
     	type: "GET",
-    	url: "./data/ad2.json",
+    	url: "./data/ad.json",
     	dataType: "json",
     	success:function(response){
     	    var ad = eval(response);
-    	    var ad_list = ad["ad"];
-    	     console.log("广告位ID列表:%o", ad);
-    	    var panel_heading_html = "";
+    	    ad_list = ad["ad"];
     	    for(var i=0; i<ad_list.length; i++){
-    	        var ad_id = ad_list[i]["id"];          //广告位ID
-    	        var ad_text = ad_list[i]["text"];      //广告位文字
-    	        var ad_target = ad_list[i]["target"];  //广告位投放页面
-    	        //一级菜单的html
-    	        panel_heading_html = panel_heading_html + '<div class="panel-heading" role="tab" id=ad-'+ ad_id +'">'+
-                    '<h4 class="panel-title">'+
-                    '<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse'+ ad_id + 
-                    '" aria-expanded="true" aria-controls="collapse'+ ad_id +'">'+
-                    ad_text+
-                    '</a></h4></div>'+
-                    '<div id="collapse'+ ad_id +'" class="panel-collapse collapse" role="tabpanel"></div>';
-    	    }
-    	    $("#accordion-body").html(panel_heading_html);     //生成一级菜单
-    	    
-    	    //生成二级菜单
-    	    for(var i=0; i<ad_list.length; i++){
-    	        var ad_id = ad_list[i]["id"];
-    	        var ad_target = ad_list[i]["target"];
-    	        var ad_name = ad_list[i]["name"];
-    	        var panel_body_html = "";
-                for(var j=0; j<ad_target.length; j++){
-                    panel_body_html = panel_body_html +'<div class="panel-body"><ul><a href="#" id="'+ ad_name +'-'+ ad_target[j] +'" ad_id="'+ad_id+'" ad_target="' +ad_target[j]+ '">'+ ad_target[j] +'</a></ul></div>';
-                }
-                //panel_body_html = panel_body_html + '</div>';
-                $("#collapse"+ad_id).html(panel_body_html);
-    	    }  
+    	        var ad_id = ad_list[i]["id"];               //广告位ID
+    	        var ad_text = ad_list[i]["name_cn"];        //广告位文字
+                var ad_target = ad_list[i]["target_page"];  //广告位投放页面
+                ad_dict[ad_id] = ad_list[i];                //添加元素
+    	        $("#menu").append('<button type="button" ad_id="'+ ad_id + '" class="list-group-item">' +ad_text+ '</button>');
+            }
+            $("#info").text("广告位列表加载成功");
+            console.log("广告位ID列表:%o", ad_dict);
     	},
     	error:function(){
-    	    alert("请求广告位ID列表失败，请联系技术人员");
+            $("#info").text("广告位列表加载失败，请联系技术人员");
     	}
-    });
-    
-    /*获得定向页面ID列表*/
-    $.ajax({
-            type: "GET",
-            url: "./data/target.json",
-            dataType: "json",
-            success: function(response){
-                target_id_list = eval(response);  
-                console.log("定向页面ID列表:%o", target_id_list);
-            },
-            error: function(){
-                alert("请求定向页面ID列表失败，请联系技术人员");
-            }
     });
 });
 
 
-//二级菜单添加点击监听事件
-$(document).on('click','.panel-body ul a',function(){
-    if($(this).attr("ad_id") && $(this).attr("ad_target")){
-        var ad_id = $(this).attr("ad_id");              //广告位ID
-        var ad_target = $(this).attr("ad_target");      //定向页面ID
-        //console.log(ad_id);
-        //console.log(ad_target);
-        target_id = ad_id + target_id_list[ad_target];  //广告投放页面ID
-        console.log("广告定向页面ID: %s", target_id);
-        if(target_id){
-            var target_id_url = "./data/" + target_id +".json";
-            $.ajax({
-                type: "GET",
-                url: target_id_url,
-                dataType: "json",
-                success: function(response){
-                    //根据广告定向页面信息动态生成配置表单
-                    target_id_info = eval(response);
-                    console.log(target_id_info);
-                    $("#setting").html("");
-                    $("#setting").append('<div class="form-group">'+
-                        '<label for="img-upload">选择图片物料</label><input type="file" id="img-upload" accept="image/*" />'+
-                        '</div>'
-                    );
-                    //是否有广告角标
-                    if(target_id_info["is_adtag"]){
-                        $("#setting").append('<div class="form-group">'+
-                            '<input type="checkbox" id="adtag" /><label for="adtag">广告角标</label>'+
-                            '</div>'
-                        );
-                    }
-                    $("#setting").append('<div id="btn-generate" class="btn btn-primary">生成</div>');
-                    $("#setting").append('</form>');
-                    
-                   
-                    
-                    console.log($("#demo"))
-                },
-                error: function(){
-                    alert("获取广告定向页面信息失败，请联系技术人员");
-                }
-            });
+//广告位菜单点击监听
+$(document).on('click','.list-group button',function(){
+    $("#page").html("");
+    $("#setting").html("");
+    if($(this).attr("ad_id")){
+        ad_id_clk = $(this).attr("ad_id");          //选中的广告位ID
+        console.log("选中广告位的ID: %s", ad_id_clk);
+        $("#info").text(ad_dict[ad_id_clk]["name_cn"]);
+
+        //根据选择广告位，动态生成投放页面下拉选单
+        var target_page_list = ad_dict[ad_id_clk]["target_page"]    //所选广告位支持的投放页面ID列表
+        console.log("选中广告位支持的投放页面ID列表: %o", target_page_list);
+
+        $("#page").append('<div id="legend"><legend>投放页面</legend></div>'+
+            '<div class="control-group" id="target_page_form"></div>'
+        );
+        $("#target_page_form").append('<div class="controls"><select class="form-control" id="target_page_select"></select></div>');
+        $("#target_page_select").append('<option disabled="disabled" selected="selected">--请选择--</option>');
+        for(var i=0; i<target_page_list.length; i++){
+            $("#target_page_select").append('<option value="'+ target_page_list[i] +'">'+ page_list[target_page_list[i]] +'</option>');     //添加选项
         }
     }else{
         return;
     }
 });
 
-$(document).on('change', '#img-upload', function(event){
+//投放页面下拉选单监听
+$(document).on('change', '#target_page_select', function(){
+
+    //动态生成配置项
+    $("#setting").html("");
+    $("#setting").append('<div id="legend"><legend>配置项</legend></div>');
+    
+    //物料上传
+    $("#setting").append('<div class="control-group">'+
+        '<label for="img-upload" class="control-label">图片物料</label>'+
+        '<div class="controls"><input type="file" id="img-upload" accept="image/*" /></div></div>'
+    );
+    
+    //广告角标
+    if(ad_dict[ad_id_clk]["ad_tag_set"]){
+        $("#setting").append('<div class="control-group">'+
+            '<div class="controls"><input type="checkbox" id="ad_tag" /><label for="ad_tag" class="control-label">广告角标</label>'+
+            '</div></div>'
+        );
+    }
+
+    //栏目名称
+    if($("#target_page_select").val() == "08"){
+        $("#setting").append('<div class="control-group">'+
+            '<label class="control-label" for="input_column">栏目名称</label>'+
+            '<div class="controls"><input type="text" placeholder="请输入栏目名称" class="input-xlarge" id="input_title" />'+
+            '<p class="help-block">栏目名称和线上栏目一致</p></div></div>'
+        );
+    }
+
+    //文章标题
+    if(ad_dict[ad_id_clk]["is_news"]){
+        $("#setting").append('<div class="control-group">'+
+            '<label class="control-label" for="input_title">文章标题</label>'+
+            '<div class="controls"><input type="text" placeholder="请输入文章标题" class="input-xlarge" id="input_title" />'+
+            '<p class="help-block">28个字以内</p></div></div>'
+        );
+    }
+
+    //生成按钮
+    $("#setting").append('<div class="btn btn-primary" id="btn_generate">生成</div>');
+});
+
+
+
+$(document).on('change', '#img_upload', function(event){
     file = event.target.files[0];
     console.log(file);
     //判断是否是图片
     if(!/image\/\w+/.test(file.type)){
-        alert("对不起，你确定这是一张图片？");
+        $("#info").text("请上传一张图片");
         return false;
     }
+    $("#info").text("图片上传成功");
 });
 
-$(document).on('click', '#btn-generate', function(){
+$(document).on('click', '#btn_generate', function(){
+    var campaign_id = ad_id_clk + $("#target_page_select").val();
+    console.log("广告活动ID: %s", campaign_id);
+
+    $.ajax({
+        type: "GET",
+        url: "./data/campaign/"+ campaign_id +".json",
+        dataType: "json",
+        success: function(response){
+            var campaign_info = eval(response);
+        },
+        error: function(){
+            $("#info").text("请求广告活动接口失败，请联系技术人员");
+        }
+    });
+    /*
     var reader = new FileReader();
     reader.readAsDataURL(file);     //转为base64
     reader.onload = function(e){
         if(target_id == 101){
             draw101(this.result);
         }
-    }
+    }*/
 });
 
 

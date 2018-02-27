@@ -1,46 +1,112 @@
 {
-    "ad": [
+    "ad" : [
         {
-            "id": 1,
-            "name": "opening_page",
-            "text": "开机屏",
-            "page": ["1080*1596", "1125*2098", "iPhoneX"],
-            "is_news": false 
+            "id": "01",
+            "name_en": "opening",
+            "name_cn": "开机屏",
+            "ad_tag": true,
+            "ad_tag_set": false,
+            "is_news": false,
+            "target_page": ["11", "12", "13"]
         },
         {
-            "id": 2,
-            "name": "focus_banner",
-            "text": "焦点通栏",
-            "page": ["首页", "视频", "时事", "财经", "思想", "生活", "问吧"],
-            "is_news": false
+            "id": "02",
+            "name_en": "popup_hor",
+            "name_cn": "弹窗横版",
+            "ad_tag": true,
+            "ad_tag_set": true,
+            "is_news": false,
+            "target_page": ["01", "02", "03", "04", "05", "06", "08"]
         },
         {
-            "id": 3,
-            "name": "banner",
-            "text": "横栏",
-            "page": ["首页", "视频", "时事", "财经", "思想", "生活", "问吧"],
-            "is_news": false
+            "id": "03",
+            "name_en": "popup_ver",
+            "name_cn": "弹窗竖版",
+            "ad_tag": true,
+            "ad_tag_set": true,
+            "is_news": false,
+            "target_page": ["01", "02", "03", "04", "05", "06", "08"]
         },
         {
-            "id": 4,
-            "name": "pop_up_1",
-            "text": "弹窗（横版）",
-            "page": ["首页", "视频", "时事", "财经", "思想", "生活", "问吧"],
-            "is_news": false
+            "id": "04",
+            "name_en": "sticker",
+            "name_cn": "贴纸",
+            "ad_tag": false,
+            "ad_tag_set": false,
+            "is_news": false,
+            "target_page": ["01", "02", "03", "04", "05", "06", "08"]
         },
         {
-            "id": 5,
-            "name": "pop_up_1",
-            "text": "弹窗（竖版）",
-            "page": ["首页", "视频", "时事", "财经", "思想", "生活", "问吧"],
-            "is_news": false
+            "id": "05",
+            "name_en": "float_layer",
+            "name_cn": "浮层",
+            "ad_tag": true,
+            "ad_tag_set": true,
+            "is_news": false,
+            "target_page": ["09", "02", "03", "04", "05", "06", "07"]
         },
         {
-            "id": 5,
-            "name": "float_layer",
-            "text": "浮层",
-            "page": ["导航栏", "视频", "时事", "财经", "思想", "生活", "问吧"],
-            "is_news": "false"
+            "id": "06",
+            "name_en": "round_banner",
+            "name_cn": "头条区轮播",
+            "ad_tag": true,
+            "ad_tag_set": true,
+            "is_news": true,
+            "target_page": ["14", "15"]
+        },
+        {
+            "id": "07",
+            "name_en": "focus_banner",
+            "name_cn": "焦点通栏",
+            "ad_tag": true,
+            "ad_tag_set": true,
+            "is_news": false,
+            "target_page": ["01", "02", "03", "04", "05", "06", "07"]
+        },
+        {
+            "id": "08",
+            "name_en": "banner",
+            "name_cn": "横栏",
+            "ad_tag": true,
+            "ad_tag_set": true,
+            "is_news": false,
+            "target_page": ["01", "02", "03", "04", "05", "06", "07", "08"]
+        },
+        {
+            "id": "09",
+            "name_en": "top_banner",
+            "name_cn": "顶部横栏",
+            "ad_tag": true,
+            "ad_tag_set": true,
+            "is_news": false,
+            "target_page": ["10"]
+        },
+        {
+            "id": "10",
+            "name_en": "foot_banner",
+            "name_cn": "底部横栏",
+            "ad_tag": true,
+            "ad_tag_set": true,
+            "is_news": false,
+            "target_page": ["10"]
+        },
+        {
+            "id": "11",
+            "name_en": "fixed_news",
+            "name_cn": "固定位置信息流",
+            "ad_tag": true,
+            "ad_tag_set": true,
+            "is_news": true,
+            "target_page": ["01", "02", "03", "04", "05", "06", "08"]
+        },
+        {
+            "id": "12",
+            "name_en": "nofixed_news",
+            "name_cn": "不固定位置信息流",
+            "ad_tag": true,
+            "ad_tag_set": true,
+            "is_news": true,
+            "target_page": ["01", "02", "03", "04", "05", "06", "08"]
         }
     ]
 }

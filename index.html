@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>澎湃新闻APP广告demo生成工具</title>
-		<link rel="stylesheet" href="./css/bootstrap.min.css" />
-		<link rel="stylesheet" href="./css/bootstrap-theme.css" />
-		<link rel="stylesheet" href="./css/style.css" />
-		<script src="./js/jquery-3.3.1.min.js"></script>
-		<script src="./js/bootstrap.min.js"></script>
-	</head>
-	<body>
-		<div class="header">澎湃新闻APP广告demo生成工具</div>
-		<div class="container">
-		    <div class="row">
-		        <div class="col-sm-3 col-md-3 col-lg-3" id="menu">
-                    <div class="panel-group" id="accordion" role="tablist">
-                        <div class="panel panel-default" id="accordion-body">                 
-                        </div>
-                    </div>
-		        </div>
-		        <div class="col-sm-3 col-md-3 col-lg-3">
-		            <form role="form" id="setting">
-		            
-		        </div>
-		        <div class="col-sm-3 col-md-3 col-lg-3">
+    <head>
+        <meta charset="utf-8" />
+        <title>澎湃新闻APP广告demo生成工具</title>
+        <link rel="stylesheet" href="./css/bootstrap.min.css" />
+        <link rel="stylesheet" href="./css/bootstrap-theme.css" />
+        <link rel="stylesheet" href="./css/style.css" />
+        <script src="./js/jquery-3.3.1.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="header">澎湃新闻APP广告demo生成工具</div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <div class="list-group" id="menu"></div>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <div class="alert alert-info" id="info" role="alert"></div>
+                    <form role="form" class="form-horizontal" id="page">
+                        <fieldset></fieldset></fieldset>
+                    </form>
+                    <form role="form" class="form-horizontal" id="setting">
+                        <fieldset></fieldset>
+                    </form>
+                    
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3">
                    <canvas id="demo"></canvas>
                 </div>
-		    </div>
-		</div>
-		<div class="footer"></div>
-		<script src="./js/main.js"></script>
-	</body>
+            </div>
+        </div>
+        <div class="footer"></div>
+        <script src="./js/main2.js"></script>
+    </body>
 </html>

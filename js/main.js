@@ -13,7 +13,7 @@ $(document).ready(function(){
     	success:function(response){
     	    var ad = eval(response);
     	    var ad_list = ad["ad"];
-    	     console.log("广告位ID列表:%o", ad);
+    	    console.log("广告位ID列表:%o", ad);
     	    var panel_heading_html = "";
     	    for(var i=0; i<ad_list.length; i++){
     	        var ad_id = ad_list[i]["id"];          //广告位ID
