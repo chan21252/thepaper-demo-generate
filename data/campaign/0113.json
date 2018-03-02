@@ -1,0 +1,21 @@
+{
+    "ad_id": "01",
+    "page_id": "13",
+    "canvas": {
+        "size": [866, 1704]
+    },
+    "material": {
+        "img_ad":{
+            "url": null,
+            "position": [58, 40],
+            "size": [750, 1399],
+            "index": 1
+        },
+        "img_bg":{
+            "url": "./img/01/0113/bg-0113.png",
+            "position": [0, 0],
+            "size": [866, 1704],
+            "index": 2
+        } 
+    }
+}
