@@ -186,6 +186,7 @@ function drawDemo(imgData, canvas_size, material){
         return false;
     }
 
+    var img_arr = new Array();
     //遍历物料
     for(var x in material){
         if(x == "img_ad"){
@@ -193,24 +194,26 @@ function drawDemo(imgData, canvas_size, material){
         }else{
             drawUI(material[x]);    //其他物料
         }
-        
     }
 }
 
 function drawUI(mr){
     var img = new Image();
-    img.src = mr["url"];
     img.onload = function(){
+        console.log(img.width);
         ctx.drawImage(img, mr["position"][0], mr["position"][1], mr["size"][0], mr["size"][1]);
     }
+    img.src = mr["url"];
+    
 }
 
 function drawAD(mr, imgData){
     var img = new Image();
-    img.src = imgData;
     img.onload = function(){
+        console.log(img.width);
         ctx.drawImage(img, mr["position"][0], mr["position"][1], mr["size"][0], mr["size"][1]);
     }
+    img.src = imgData;
 }
 
 

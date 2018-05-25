@@ -1,20 +1,20 @@
 {
     "ad_id": "01",
-    "page_id": "12",
+    "page_id": "23",
     "canvas": {
-        "size": [1080, 2339]
+        "size": [1440, 2792]
     },
     "material": {
         "img_bg":{
-            "url": "./img/01/bg-0112.jpg",
-            "position": [0, 2015],
-            "size": [1080, 324],
+            "url": "./img/01/bg-0114.jpg",
+            "position": [0, 2360],
+            "size": [1440, 432],
             "index": 1
         }, 
         "img_ad":{
             "url": null,
             "position": [0, 0],
-            "size": [1080, 2015],
+            "size": [1440, 2360],
             "index": 2
         }
     }

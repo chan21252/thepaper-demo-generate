@@ -1,0 +1,45 @@
+{
+    "ad_id": "02",
+    "page_id": "01",
+    "canvas": {
+        "size": [750, 1334]
+    },
+    "material": {
+        "img_bg":{
+            "url": "./img/02/bg-0201.png",
+            "position": [0, 0],
+            "size": [750, 1334],
+            "index": 1
+        }, 
+        "img_mask":{
+            "url": "./img/02/02-mask.png",
+            "position": [0, 0],
+            "size": [750, 1334],
+            "index": 2
+        }, 
+        "img_ad":{
+            "url": null,
+            "position": [30, 394],
+            "size": [690, 388],
+            "index": 3
+        },
+        "img_close":{
+            "url": "./img/02/02-close.png",
+            "position": [350, 862],
+            "size": [50, 50],
+            "index": 4
+        },
+        "img_time":{
+            "url": "./img/02/02-time.png",
+            "position": [37, 402],
+            "size": [50, 50],
+            "index": 5
+        },
+        "img_adflag":{
+            "url": "./img/02/02-adflag.png",
+            "position": [640, 739],
+            "size": [60, 30],
+            "index": 6
+        }
+    }
+}

@@ -6,7 +6,7 @@
     },
     "material": {
         "img_bg":{
-            "url": "./img/01/0111/bg-0111.jpg",
+            "url": "./img/01/bg-0111.jpg",
             "position": [0, 1111],
             "size": [750, 223],
             "index": 1

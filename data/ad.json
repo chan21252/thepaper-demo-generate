@@ -7,7 +7,7 @@
             "ad_tag": true,
             "ad_tag_set": false,
             "is_news": false,
-            "target_page": ["11", "12", "13"]
+            "target_page": ["11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"]
         },
         {
             "id": "02",
@@ -52,7 +52,7 @@
             "ad_tag": true,
             "ad_tag_set": true,
             "is_news": true,
-            "target_page": ["14", "15"]
+            "target_page": ["24", "25"]
         },
         {
             "id": "07",
